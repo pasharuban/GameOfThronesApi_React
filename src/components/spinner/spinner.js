@@ -3,32 +3,72 @@ import "./spinner.css";
 
 const Spinner = () => {
   return (
-    <div className="lds-css ng-scope">
-      <div className="lds-spin">
-        <div>
-          <div></div>
-        </div>
-        <div>
-          <div></div>
-        </div>
-        <div>
-          <div></div>
-        </div>
-        <div>
-          <div></div>
-        </div>
-        <div>
-          <div></div>
-        </div>
-        <div>
-          <div></div>
-        </div>
-        <div>
-          <div></div>
-        </div>
-        <div>
-          <div></div>
-        </div>
+    <div class="loadingio-spinner-spinner-ljbldl98k9k">
+      <div class="ldio-2eq2kcax5v2">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
       </div>
     </div>
   );
