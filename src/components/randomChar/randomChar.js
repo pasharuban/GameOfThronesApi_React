@@ -1,7 +1,11 @@
 import React, { Component } from "react";
+
 import gotService from "../../services/gotService";
+
 import Spinner from "../spinner";
+
 import ErrorMessage from "../errorMessage";
+
 import "./randomChar.css";
 
 export default class RandomChar extends Component {
@@ -21,6 +25,7 @@ export default class RandomChar extends Component {
   onCharLoaded = (char) => {
     this.setState({ char, loading: false });
   };
+
   onError = (err) => {
     this.setState({
       loading: false,
@@ -38,9 +43,11 @@ export default class RandomChar extends Component {
 
   render() {
     const { char, loading, error } = this.state;
+
     const errorMessage = error ? <ErrorMessage /> : null;
     const spinner = loading ? <Spinner /> : null;
     const content = !(loading || error) ? <View char={char} /> : null;
+
     return (
       <div className="random-block rounded">
         {errorMessage}

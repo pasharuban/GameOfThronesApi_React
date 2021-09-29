@@ -36,16 +36,8 @@ export default class App extends Component {
     });
   };
 
-  showRandomChar() {
-    if (this.state.showRandomChar) {
-      return <RandomChar />;
-    } else {
-      return null;
-    }
-  }
-
   render() {
-    const elem = this.showRandomChar();
+    const elem = this.state.showRandomChar ? <RandomChar /> : null;
     return (
       <>
         <Container>

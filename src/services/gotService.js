@@ -49,6 +49,7 @@ export default class GotService {
       return "no data";
     }
   }
+  
   _transformCharacter(char) {
     return {
       name: this.isSet(char.name),
