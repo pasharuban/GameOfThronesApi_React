@@ -11,7 +11,7 @@ import "./randomChar.css";
 export default class RandomChar extends Component {
   constructor() {
     super();
-    this.updateChar();
+    this.updateChar = this.updateChar.bind(this);
   }
 
   gotService = new gotService();
@@ -39,6 +39,14 @@ export default class RandomChar extends Component {
       .getCharacter(id)
       .then(this.onCharLoaded)
       .catch(this.onError);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerId);
+  }
+  componentDidMount() {
+    this.updateChar();
+    this.timerId = setInterval(this.updateChar, 3500);
   }
 
   render() {

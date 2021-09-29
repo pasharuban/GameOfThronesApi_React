@@ -1,3 +1,6 @@
 .item-list .list-group-item {
-    cursor: pointer;
+  cursor: pointer;
+}
+.item-list {
+  background-color: white;
 }

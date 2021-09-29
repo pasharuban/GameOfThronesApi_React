@@ -1,6 +1,8 @@
 export default class GotService {
   constructor() {
     this._apiBase = "https://www.anapioficeandfire.com/api";
+
+    this._transformCharacter = this._transformCharacter.bind(this);
   }
 
   async getResource(url) {
@@ -46,12 +48,18 @@ export default class GotService {
     if (data) {
       return data;
     } else {
-      return "no data";
+      return "NO DATA!";
     }
   }
-  
+
+  setIdForAnyChar(char) {
+    return char.url.match(/\d/g).join("");
+  }
+
   _transformCharacter(char) {
+    this.setIdForAnyChar(char);
     return {
+      id: this.setIdForAnyChar(char),
       name: this.isSet(char.name),
       gender: this.isSet(char.gender),
       born: this.isSet(char.born),

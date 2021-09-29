@@ -1,16 +1,31 @@
 .char-details {
-    background-color: #fff;
-    padding: 25px 25px 15px 25px;
-    margin-bottom: 40px;
+  background-color: #fff;
+  padding: 25px 25px 15px 25px;
+  margin-bottom: 40px;
 }
 
 .char-details h4 {
-    margin-bottom: 20px;
-    text-align: center;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 .select-error {
-    color: #fff;
-    text-align: center;
-    font-size: 26px;
+  color: #fff;
+  text-align: center;
+  font-size: 26px;
+}
+
+.select-error {
+  margin: 0;
+  background-color: white;
+  background-image: url("./arrow-left.png");
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: contain;
+  font-size: 20px;
+  padding: 5px;
+  padding-left: 70px;
+  color: rgb(89, 8, 8);
+  font-weight: 600;
+  border-radius: 3px;
 }

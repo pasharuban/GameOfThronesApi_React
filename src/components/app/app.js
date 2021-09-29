@@ -1,10 +1,13 @@
 import React, { Component } from "react";
+
 import { Col, Row, Container } from "reactstrap";
+
+import styled from "styled-components";
+
 import Header from "../header";
 import RandomChar from "../randomChar";
-import ItemList from "../itemList";
-import CharDetails from "../charDetails";
-import styled from "styled-components";
+import CharacterPage from "../characterPage";
+import ErrorMessage from "../errorMessage";
 
 const ButtonForRandomChar = styled.button`
   width: 120px;
@@ -24,7 +27,14 @@ export default class App extends Component {
   state = {
     showRandomChar: true,
     buttonText: "Hide",
+    error: false,
   };
+
+  componentDidCatch() {
+    this.setState({
+      error: true,
+    });
+  }
 
   onRandomChar = () => {
     this.setState(({ showRandomChar }) => {
@@ -37,7 +47,12 @@ export default class App extends Component {
   };
 
   render() {
+    if (this.state.error) {
+      return <ErrorMessage />;
+    }
+
     const elem = this.state.showRandomChar ? <RandomChar /> : null;
+
     return (
       <>
         <Container>
@@ -54,14 +69,7 @@ export default class App extends Component {
               </div>
             </Col>
           </Row>
-          <Row>
-            <Col md="6">
-              <ItemList />
-            </Col>
-            <Col md="6">
-              <CharDetails />
-            </Col>
-          </Row>
+          <CharacterPage></CharacterPage>
         </Container>
       </>
     );
