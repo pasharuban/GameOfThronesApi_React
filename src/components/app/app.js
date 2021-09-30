@@ -8,6 +8,8 @@ import Header from "../header";
 import RandomChar from "../randomChar";
 import CharacterPage from "../characterPage";
 import ErrorMessage from "../errorMessage";
+import BooksPage from "../booksPage";
+import HousesPage from "../housesPage";
 
 const ButtonForRandomChar = styled.button`
   width: 120px;
@@ -69,7 +71,8 @@ export default class App extends Component {
               </div>
             </Col>
           </Row>
-          <CharacterPage></CharacterPage>
+          
+          <HousesPage></HousesPage>
         </Container>
       </>
     );

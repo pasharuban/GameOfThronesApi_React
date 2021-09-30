@@ -7,7 +7,7 @@ import RowBlock from "../rowBlock/rowBlock";
 
 import gotService from "../../services/gotService";
 
-export default class CharacterPage extends Component {
+export default class HousePage extends Component {
   gotService = new gotService();
 
   state = {
@@ -32,29 +32,29 @@ export default class CharacterPage extends Component {
       return <ErrorMessage />;
     }
 
-    const booksList = (
+    const housesList = (
       <ItemList
         onItemSelected={this.onCharSelected}
-        getData={this.gotService.getAllCharacters}
+        getData={this.gotService.getAllHouses}
         renderItem={(item) => item.name}
       />
     );
-    const booksDetails = (
+    const housesDetails = (
       <ItemDetails
         itemId={this.state.selectedChar}
-        getData={this.gotService.getCharacter}
-        nameOfItem="character"
+        getData={this.gotService.getHouse}
+        nameOfItem="house"
       >
         <Field field="name" label="Name" />
-        <Field field="gender" label="Gender" />
-        <Field field="born" label="Born" />
-        <Field field="died" label="Died" />
-        <Field field="culture" label="Culture" />
+        <Field field="region" label="Region" />
+        <Field field="words" label="Words" />
+        <Field field="titles" label="Titles" />
+        <Field field="ancestralWeapons" label="AncestralWeapons" />
       </ItemDetails>
     );
 
     return (
-      <RowBlock itemList={booksList} itemDetails={booksDetails}></RowBlock>
+      <RowBlock itemList={housesList} itemDetails={housesDetails}></RowBlock>
     );
   }
 }

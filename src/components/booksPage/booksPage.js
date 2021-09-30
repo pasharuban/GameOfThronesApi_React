@@ -7,7 +7,7 @@ import RowBlock from "../rowBlock/rowBlock";
 
 import gotService from "../../services/gotService";
 
-export default class CharacterPage extends Component {
+export default class BooksPage extends Component {
   gotService = new gotService();
 
   state = {
@@ -32,29 +32,27 @@ export default class CharacterPage extends Component {
       return <ErrorMessage />;
     }
 
-    const booksList = (
+    const itemList = (
       <ItemList
         onItemSelected={this.onCharSelected}
-        getData={this.gotService.getAllCharacters}
+        getData={this.gotService.getAllBooks}
         renderItem={(item) => item.name}
       />
     );
-    const booksDetails = (
+    const charDetails = (
       <ItemDetails
         itemId={this.state.selectedChar}
-        getData={this.gotService.getCharacter}
-        nameOfItem="character"
+        getData={this.gotService.getBook}
+        nameOfItem="book"
       >
         <Field field="name" label="Name" />
-        <Field field="gender" label="Gender" />
-        <Field field="born" label="Born" />
-        <Field field="died" label="Died" />
-        <Field field="culture" label="Culture" />
+        <Field field="numberOfPages" label="NumberOfPages" />
+        <Field field="publisher" label="Publisher" />
+        <Field field="titles" label="Titles" />
+        <Field field="released" label="Released" />
       </ItemDetails>
     );
 
-    return (
-      <RowBlock itemList={booksList} itemDetails={booksDetails}></RowBlock>
-    );
+    return <RowBlock itemList={itemList} itemDetails={charDetails}></RowBlock>;
   }
 }
