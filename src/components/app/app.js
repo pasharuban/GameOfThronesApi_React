@@ -71,7 +71,7 @@ export default class App extends Component {
               </div>
             </Col>
           </Row>
-          
+
           <HousesPage></HousesPage>
         </Container>
       </>
