@@ -11,13 +11,13 @@ export default class HousePage extends Component {
   gotService = new gotService();
 
   state = {
-    selectedChar: null,
+    selectedHouse: null,
     error: false,
   };
 
-  onCharSelected = (id) => {
+  onHouseSelected = (id) => {
     this.setState({
-      selectedChar: id,
+      selectedHouse: id,
     });
   };
 
@@ -34,14 +34,14 @@ export default class HousePage extends Component {
 
     const housesList = (
       <ItemList
-        onItemSelected={this.onCharSelected}
+        onItemSelected={this.onHouseSelected}
         getData={this.gotService.getAllHouses}
         renderItem={(item) => item.name}
       />
     );
     const housesDetails = (
       <ItemDetails
-        itemId={this.state.selectedChar}
+        itemId={this.state.selectedHouse}
         getData={this.gotService.getHouse}
         nameOfItem="house"
       >

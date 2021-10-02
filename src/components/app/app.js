@@ -6,10 +6,14 @@ import styled from "styled-components";
 
 import Header from "../header";
 import RandomChar from "../randomChar";
-import CharacterPage from "../characterPage";
 import ErrorMessage from "../errorMessage";
-import BooksPage from "../booksPage";
-import HousesPage from "../housesPage";
+import PageNotFound from "../pageNotFound";
+
+import { BooksItem, BooksPage, CharacterPage, HousesPage } from "../pages";
+
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+import "./app.css";
 
 const ButtonForRandomChar = styled.button`
   width: 120px;
@@ -56,25 +60,40 @@ export default class App extends Component {
     const elem = this.state.showRandomChar ? <RandomChar /> : null;
 
     return (
-      <>
-        <Container>
-          <Header />
-        </Container>
-        <Container>
-          <Row>
-            <Col lg={{ size: 5, offset: 0 }}>
-              <div className="random-char-section">
-                <ButtonForRandomChar onClick={this.onRandomChar}>
-                  {this.state.buttonText}
-                </ButtonForRandomChar>
-                {elem}
-              </div>
-            </Col>
-          </Row>
-
-          <HousesPage></HousesPage>
-        </Container>
-      </>
+      <Router>
+        <div className="app">
+          <Container>
+            <Header />
+          </Container>
+          <Container>
+            <Row>
+              <Col lg={{ size: 5, offset: 0 }}>
+                <div className="random-char-section">
+                  <ButtonForRandomChar onClick={this.onRandomChar}>
+                    {this.state.buttonText}
+                  </ButtonForRandomChar>
+                  {elem}
+                </div>
+              </Col>
+            </Row>
+            <Switch>
+              <Route path="/" render={() => <h1>MAIN PAGE</h1>} exact />
+              <Route path="/characters" component={CharacterPage} exact />
+              <Route path="/books" component={BooksPage} exact />
+              <Route
+                path="/books/:id"
+                render={({ match }) => {
+                  const { id } = match.params;
+                  return <BooksItem bookId={id} />;
+                }}
+                exact
+              />
+              <Route path="/houses" component={HousesPage} exact />
+              <Route component={PageNotFound} exact />
+            </Switch>
+          </Container>
+        </div>
+      </Router>
     );
   }
 }

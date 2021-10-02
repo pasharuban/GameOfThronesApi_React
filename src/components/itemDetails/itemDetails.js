@@ -67,12 +67,13 @@ export default class ItemDetails extends Component {
 
   render() {
     const { item, loading, error } = this.state;
-    const { nameOfItem } = this.props;
 
     if (!item && error) return <ErrorMessage />;
     else if (!item)
       return (
-        <span className="select-error">Please select a {nameOfItem}!</span>
+        <span className="select-error">
+          Please select a {this.props.nameOfItem}!
+        </span>
       );
 
     const { name } = item;
