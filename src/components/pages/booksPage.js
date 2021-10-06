@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import ItemList from "../itemList";
+import { ItemListBooks } from "../itemList";
 import ErrorMessage from "../errorMessage";
 import { withRouter } from "react-router-dom";
 
@@ -25,7 +25,7 @@ class BooksPage extends Component {
     }
 
     return (
-      <ItemList
+      <ItemListBooks
         onItemSelected={(itemId) => {
           this.props.history.push(itemId);
         }}

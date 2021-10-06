@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import ItemList from "../itemList";
+import { ItemListChars } from "../itemList";
 import ItemDetails, { Field } from "../itemDetails";
 import ErrorMessage from "../errorMessage";
 import RowBlock from "../rowBlock/rowBlock";
@@ -32,14 +32,14 @@ export default class CharacterPage extends Component {
       return <ErrorMessage />;
     }
 
-    const booksList = (
-      <ItemList
+    const characterList = (
+      <ItemListChars
         onItemSelected={this.onCharSelected}
-        getData={this.gotService.getAllCharacters}
         renderItem={(item) => item.name}
       />
     );
-    const booksDetails = (
+
+    const characterDetails = (
       <ItemDetails
         itemId={this.state.selectedChar}
         getData={this.gotService.getCharacter}
@@ -54,7 +54,10 @@ export default class CharacterPage extends Component {
     );
 
     return (
-      <RowBlock itemList={booksList} itemDetails={booksDetails}></RowBlock>
+      <RowBlock
+        itemList={characterList}
+        itemDetails={characterDetails}
+      ></RowBlock>
     );
   }
 }

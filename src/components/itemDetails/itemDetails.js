@@ -66,6 +66,7 @@ export default class ItemDetails extends Component {
   }
 
   render() {
+    console.log(this.props.nameOfItem);
     const { item, loading, error } = this.state;
 
     if (!item && error) return <ErrorMessage />;
@@ -100,3 +101,7 @@ export default class ItemDetails extends Component {
     );
   }
 }
+
+ItemDetails.defaultProps = {
+  nameOfItem: "item",
+};
