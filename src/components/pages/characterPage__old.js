@@ -1,33 +1,48 @@
-import React, { useState } from "react";
+import React, { Component } from "react";
 
 import { ItemListChars } from "../itemList";
 import ItemDetails, { Field } from "../itemDetails";
 import ErrorMessage from "../errorMessage";
 import RowBlock from "../rowBlock/rowBlock";
 
-import GotService from "../../services/gotService";
+import gotService from "../../services/gotService";
 
-const CharacterPage = () => {
-  const gotService = new GotService();
+export default class CharacterPage extends Component {
+  gotService = new gotService();
 
-  const [selectedChar, updateSelectedChar] = useState(null);
+  state = {
+    selectedChar: null,
+    error: false,
+  };
 
-  function onCharSelected(id) {
-    updateSelectedChar(id);
+  onCharSelected = (id) => {
+    this.setState({
+      selectedChar: id,
+    });
+  };
+
+  componentDidCatch() {
+    this.setState({
+      error: true,
+    });
   }
 
-  try {
+  render() {
+    if (this.state.error) {
+      return <ErrorMessage />;
+    }
+
     const characterList = (
       <ItemListChars
-        onItemSelected={onCharSelected}
+        onItemSelected={this.onCharSelected}
         renderItem={(item) => item.name}
       />
     );
 
     const characterDetails = (
       <ItemDetails
-        itemId={selectedChar}
-        getData={gotService.getCharacter}
+        itemId={this.state.selectedChar}
+        getData={this.gotService.getCharacter}
         nameOfItem="character"
       >
         <Field field="name" label="Name" />
@@ -44,10 +59,5 @@ const CharacterPage = () => {
         itemDetails={characterDetails}
       ></RowBlock>
     );
-  } catch (error) {
-    console.log("error");
-    return <ErrorMessage />;
   }
-};
-
-export default CharacterPage;
+}

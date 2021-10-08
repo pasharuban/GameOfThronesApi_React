@@ -3,12 +3,6 @@ import React, { Component } from "react";
 import "./itemList.css";
 
 export default class ItemList extends Component {
-  onError() {
-    this.setState({
-      itemList: null,
-      error: true,
-    });
-  }
 
   renderItems(arr) {
     return arr.map((item) => {
